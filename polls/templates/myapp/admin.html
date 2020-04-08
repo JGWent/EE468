@@ -1,0 +1,12 @@
+<body>
+    <h1>Admin Page</h1>
+    <p>Generate List of professors in order of: name, dept, or salary </p>
+    <form action='/polls/show' method='POST'>
+        {% csrf_token %}
+        <button type='submit' name='1' value="1"> name </button>
+        <button type='submit' name='2' value="2"> dept </button>
+        <button type='submit' name='3'value="3"> salary </button>
+    </form>
+
+</body>
+

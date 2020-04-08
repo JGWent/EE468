@@ -1,0 +1,6 @@
+<form action="/polls/admin_page" method="post">
+    {% csrf_token %}
+    <label for="your_name">User (admin, prof, student): </label><br>
+    <input id="your_name" type="text" name="your_name" value="{{ current_name }}">
+    <input type="submit" value="OK">
+</form>
