@@ -1,0 +1,13 @@
+<body>
+    <h1>Professor Page</h1>
+    <p>Choose an option below: </p>
+    <form action='/polls/semester' method='POST'>
+        {% csrf_token %}
+        <button type='submit' name='1' value="1"> View my courses and number of enrolled students </button>
+    </form>
+	<form action='/polls/semester2' method='POST'>
+        {% csrf_token %}
+        <button type='submit' name='2' value="2"> View the students in my courses </button>
+    </form>
+
+</body>

@@ -1,0 +1,21 @@
+<body>
+    <form action='/polls/semester2' method='POST'>
+        {% csrf_token %}
+        <button type='submit' name='1' value="1"> Go back </button>
+    </form>
+    <table style="width:400px">
+	<thead>
+        <tr>
+            <th colspan="1">Student Names:</th>
+        </tr>
+    </thead>
+        {% for r in rows%}
+            <tr>
+                <th>{{r.0}}</th>
+                <th>{{r.1}}</th>
+                <th>{{r.2}}</th>
+                <th>{{r.3}}</th>
+            </tr>
+        {% endfor %}
+        </table>
+</body>
