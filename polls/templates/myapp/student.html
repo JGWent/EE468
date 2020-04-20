@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Student Page</title>
+</head>
+<body>
+<h1 style="text-align: center">Student</h1>
+<p>Please select a department, semester, and year:</p>
+<form action="/polls/student" method="POST">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit" value="Search">Search</button>
+</form>
+{% if results %}
+{% if results == "Please Select all Options" %}
+    {{ results }}
+{% else %}
+    <table style="width:800px; text-align:center">
+    <tr>
+        <th>Course ID</th>
+        <th>Course Name</th>
+        <th>Section</th>
+        <th>Building</th>
+        <th>Room</th>
+        <th>Capacity</th>
+    </tr>
+        {% for r in results %}
+            <tr>
+                {% for c in r %}
+                    <td>{{ c }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+{% endif %}
+{% else %}
+<p>No Results Found</p>
+{% endif %}
+</body>
+</html>
