@@ -1,6 +1,29 @@
-<form action="/polls/Check" method="post">
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>University Database Browser</title>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="{% static 'css/materialize.css' %}" media="screen,projection"/>
+</head>
+<body>
+<nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container center"><a id="logo-container" class="brand-logo">Login</a>
+    </div>
+</nav>
+<div class="container">
+    <form action="/polls/Check" method="POST">
     {% csrf_token %}
     <label for="your_name">User (admin, instructor, student): </label><br>
-    <input id="your_name" type="text" name="your_name" value="{{ current_name }}">
-    <input type="submit" value="OK">
+    <input class="input" style="width: 50%" id="your_name" type="text" name="your_name" value="{{ current_name }}">
+    <button class="waves-effect waves-light btn" type="submit" value="OK">Login</button>
 </form>
+</div>
+<script type="text/javascript" src="{% static 'js/materialize.js' %}"></script>
+</body>
+

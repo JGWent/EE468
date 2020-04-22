@@ -1,15 +1,36 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Professor Page</title>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="{% static 'css/materialize.css' %}" media="screen,projection"/>
+</head>
+
 <body>
-    <h1>Professor Page</h1>
-    <form action='/polls/prof_page' method='POST'>
-        {% csrf_token %}
-        <button type='submit' name='1' value="1"> Go back </button>
-    </form>
+<nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container center"><a id="logo-container" class="brand-logo">Professor</a>
+    </div>
+</nav>
+<div class="container">
+    <div class="section">
+        <form action='/polls/prof_page' method='GET'>
+            {% csrf_token %}
+            <button class="waves-effect waves-light btn" type='submit' name='1' value="1"> Go back</button>
+        </form>
+    </div>
     <p>Choose a semester: </p>
     <form action='/polls/results' method='POST'>
         {% csrf_token %}
-        <button type='submit' name='1' value="1"> Fall </button>
-		<button type='submit' name='2' value="2"> Spring </button>
-		<button type='submit' name='3' value="3"> Summer </button>
+        <button class="waves-effect waves-light btn" type='submit' name='1' value="1"> Fall</button>
+        <button class="waves-effect waves-light btn" type='submit' name='2' value="2"> Spring</button>
+        <button class="waves-effect waves-light btn" type='submit' name='3' value="3"> Summer</button>
     </form>
-
+</div>
 </body>

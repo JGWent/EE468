@@ -1,21 +1,42 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Professor</title>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="{% static 'css/materialize.css' %}" media="screen,projection"/>
+</head>
 <body>
-    <form action='/polls/semester2' method='POST'>
-        {% csrf_token %}
-        <button type='submit' name='1' value="1"> Go back </button>
-    </form>
+<nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container center"><a id="logo-container" class="brand-logo">Student</a>
+    </div>
+</nav>
+<div class="container">
+    <div class="section">
+        <form action='/polls/semester2' method='GET'>
+            {% csrf_token %}
+            <button class="waves-effect waves-light btn" type='submit' name='1' value="1"> Go back</button>
+        </form>
+    </div>
+
     <table style="width:400px">
-	<thead>
+        <thead>
         <tr>
-            <th colspan="1">Student Names:</th>
+            <th colspan="1">Name of Student</th>
         </tr>
-    </thead>
-        {% for r in rows%}
+        </thead>
+        {% for r in rows %}
             <tr>
-                <th>{{r.0}}</th>
-                <th>{{r.1}}</th>
-                <th>{{r.2}}</th>
-                <th>{{r.3}}</th>
+                {% for c in r %}
+                    <td>{{ c }}</td>
+                {% endfor %}
             </tr>
         {% endfor %}
-        </table>
+    </table>
+</div>
 </body>

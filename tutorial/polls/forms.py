@@ -1,6 +1,7 @@
 from django import forms
 from datetime import datetime
 import mysql.connector
+from polls.dbmanager import *
 
 
 def years():
@@ -12,24 +13,17 @@ def years():
 
 
 def departments():
-    mydb = mysql.connector.connect(
-        host="localhost", 
-        user="root",
-        passwd='Cakeman345', #"mypassword",
-        auth_plugin='mysql_native_password',
-        database="university",
-    )
-    cursor = mydb.cursor()
+    mydb = DbManager.instance()
+    cursor = mydb.getConnection().cursor()
     cursor.execute('select dept_name from department')
     depts = (('default', 'Select One'),)
     res = cursor.fetchall()
     for i in res:
         depts = depts + ((i[0], i[0]),)
-    mydb.close()
     return depts
 
 
 class StudentForm(forms.Form):
-    semester = forms.ChoiceField(choices=(('default', 'Select One'), ('1', 'Spring'), ('2', 'Fall')))
-    year = forms.ChoiceField(choices=years())
-    department = forms.ChoiceField(choices=departments())
+    semester = forms.ChoiceField(choices=(('default', 'Select One'), ('1', 'Spring'), ('2', 'Fall'), ('3', 'Summer')), required=False)
+    year = forms.ChoiceField(choices=years(), required=False)
+    department = forms.ChoiceField(choices=departments(), required=False)

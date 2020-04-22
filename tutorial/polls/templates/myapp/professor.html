@@ -1,16 +1,46 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Student Page</title>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="{% static 'css/materialize.css' %}" media="screen,projection"/>
+</head>
 <body>
-    <h1>Professor Page</h1>
+<nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container center"><a id="logo-container" class="brand-logo">Professor</a>
+    </div>
+</nav>
+<div class="container">
     <p>Choose an option below: </p>
-    <form action='/polls/semester' method='POST'>
-        {% csrf_token %}
-        <button type='submit' name='1' value="1"> View my courses and number of enrolled students </button>
-    </form>
-	<form action='/polls/semester2' method='POST'>
-        {% csrf_token %}
-        <button type='submit' name='2' value="2"> View the students in my courses </button>
-    </form>
-    <form action='/polls/' method='POST'>
-        {% csrf_token %}
-        <button type='submit' name='logout' value="logout"> Logout </button>
-    </form>
+    <div class="section">
+        <form action='/polls/semester' method='POST'>
+            {% csrf_token %}
+            <button class="waves-effect waves-light btn" type='submit' name='1' value="1"> View my courses and number of
+                enrolled students
+            </button>
+        </form>
+    </div>
+
+    <div class="section">
+        <form action='/polls/semester2' method='POST'>
+            {% csrf_token %}
+            <button class="waves-effect waves-light btn" type='submit' name='2' value="2"> View the students in my
+                courses
+            </button>
+        </form>
+    </div>
+    <div class="section">
+        <form action='/polls/logout' method='GET'>
+            {% csrf_token %}
+            <button class="waves-effect waves-light btn" type='submit' name='logout' value="logout"> Logout</button>
+        </form>
+    </div>
+
+</div>
 </body>

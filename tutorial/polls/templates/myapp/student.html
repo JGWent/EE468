@@ -1,43 +1,72 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Student Page</title>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="{% static 'css/materialize.css' %}" media="screen,projection"/>
 </head>
 <body>
-<h1 style="text-align: center">Student</h1>
-<p>Please select a department, semester, and year:</p>
-<form action="/polls/student" method="POST">
-    {% csrf_token %}
-    {{ form }}
-    <button type="submit" value="Search">Search</button>
-</form>
+<nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container center"><a id="logo-container" class="brand-logo">Student</a>
+    </div>
+</nav>
+
+<div class="container">
+    <p class="text">Please select a department, semester, and year:</p>
+
+</div>
+<div class="container">
+    <form action="/polls/student" method="POST">
+        {% csrf_token %}
+        {{ form }}
+        <button class="waves-effect waves-light btn" type="submit" value="Search">Search</button>
+
+    </form>
+    <form action='/polls/logout' method='GET'>
+        {% csrf_token %}
+        <button class="waves-effect waves-light btn" type='submit' name='logout' value="logout"> Logout</button>
+    </form>
+</div>
+
 {% if results %}
-{% if results == "Please Select all Options" %}
-    {{ results }}
-{% else %}
-    <table style="width:800px; text-align:center">
-    <tr>
-        <th>Course ID</th>
-        <th>Course Name</th>
-        <th>Section</th>
-        <th>Building</th>
-        <th>Room</th>
-        <th>Capacity</th>
-    </tr>
-        {% for r in results %}
-            <tr>
-                {% for c in r %}
-                    <td>{{ c }}</td>
+    {% if results == "Please Select all Options" %}
+        <div class="container">
+            {{ results }}
+        </div>
+    {% else %}
+        <div class="container center">
+            <table style="width:800px; text-align:center">
+                <tr>
+                    <th>Course ID</th>
+                    <th>Course Name</th>
+                    <th>Section</th>
+                    <th>Building</th>
+                    <th>Room</th>
+                    <th>Capacity</th>
+                </tr>
+                {% for r in results %}
+                    <tr>
+                        {% for c in r %}
+                            <td>{{ c }}</td>
+                        {% endfor %}
+                    </tr>
                 {% endfor %}
-            </tr>
-        {% endfor %}
-    </table>
-{% endif %}
+            </table>
+        </div>
+
+    {% endif %}
 {% else %}
-<p>No Results Found</p>
+    <div class="container">
+        <p>No Results Found</p>
+    </div>
 {% endif %}
+<script type="text/javascript" src="{% static 'js/materialize.js' %}"></script>
+
 </body>
 </html>
