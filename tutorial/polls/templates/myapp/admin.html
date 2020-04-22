@@ -49,5 +49,9 @@
         <button type='submit' name='5' value="5"> Spring </button>
         <button type='submit' name='6' value="6"> Fall </button>
     </form>
+    <form action='/polls/' method='POST'>
+        {% csrf_token %}
+        <button type='submit' name='logout' value="logout"> Logout </button>
+    </form>
 </body>
 

@@ -9,5 +9,8 @@
         {% csrf_token %}
         <button type='submit' name='2' value="2"> View the students in my courses </button>
     </form>
-
+    <form action='/polls/' method='POST'>
+        {% csrf_token %}
+        <button type='submit' name='logout' value="logout"> Logout </button>
+    </form>
 </body>
