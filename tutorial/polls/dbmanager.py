@@ -10,8 +10,8 @@ class DbManager:
             cls.__instance = cls.__new__(cls)
             cls.__dbconnection = mysql.connector.connect(
                 host="localhost",
-                user="root",
-                passwd='Cakeman345',  # "mypassword",
+                user="djangouser",
+                passwd='mypassword',  # "mypassword",
                 auth_plugin='mysql_native_password',
                 database="university",
             )

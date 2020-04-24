@@ -6,11 +6,9 @@ import mysql.connector
 from .dbmanager import DbManager
 from .forms import StudentForm
 
-user = 0
 
 
 def get_name(request):
-    global user
     request.session.setdefault('user', 0)
     request.session['user'] = 0
     template = loader.get_template('myapp/form.html')
@@ -20,7 +18,6 @@ def get_name(request):
 
 
 def Check(request):
-    global user
     try:
         if request.method == 'POST':
             name = request.POST.get('your_name')
@@ -48,7 +45,6 @@ def Check(request):
 
 
 def admin_page(request):
-    global user
     if request.session['user'] == 1:
         template = loader.get_template('myapp/admin.html')
         context = {}
@@ -65,7 +61,6 @@ def logout(request):
 
 
 def show(request):
-    global user
     if request.session['user'] == 1:
         # name = request.POST['your_name']
         # print(name)
@@ -182,7 +177,6 @@ def semester(request):
 
 
 def semester2(request):
-    global user
     if request.session['user'] == 2:
         template = loader.get_template('myapp/semester2.html')
         context = {}
@@ -193,7 +187,6 @@ def semester2(request):
 
 
 def results(request):
-    global user
     if request.session['user'] == 2:
         # name = request.POST['your_name']
         # print(name)
@@ -308,7 +301,6 @@ def results2(request):
 
 
 def student(request):
-    global user
     if request.session['user'] == 3:
         mydb = DbManager.instance()
         form = StudentForm()
