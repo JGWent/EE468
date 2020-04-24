@@ -24,13 +24,14 @@ def Check(request):
     try:
         if request.method == 'POST':
             name = request.POST.get('your_name')
-            if name == 'admin':
+            password = request.POST.get('your_pass')
+            if name == 'admin' and password == '1234':
                 request.session['user'] = 1
                 return redirect('/polls/admin_page', request)
-            elif name == 'instructor':
+            elif name == 'instructor' and password == 'abcd':
                 request.session['user'] = 2
                 return redirect('/polls/prof_page', request)
-            elif name == 'student':
+            elif name == 'student' and password == 'hello':
                 request.session['user'] = 3
                 return redirect('/polls/student', request)
             else:
